@@ -1,0 +1,56 @@
+body {
+    font-family: 'Arial', sans-serif;
+    background-color: #bdd1c5;
+    color: #a36361;
+}
+
+nav {
+    background-color: #a36361;
+    color: #fff;
+}
+
+h1, h2, h3, h4, h5, h6 {
+    color: #a36361;
+}
+
+.input-group-btn .btn {
+    background-color: #d3a29d;
+    color: #fff;
+}
+
+.form-control {
+    border-color: #e8b298;
+}
+
+.btn-default {
+    background-color: #e8b298;
+    color: #fff;
+}
+
+.btn-default:hover {
+    background-color: #eecc8c;
+    color: #fff;
+}
+
+.row {
+    margin: 10px 0;
+}
+
+.col-md-6 {
+    width: 50%;
+}
+
+.col-md-offset-3 {
+    margin-left: 25%;
+}
+
+ul {
+    list-style-type: none;
+    padding: 0;
+}
+
+li {
+    margin-bottom: 10px;
+}
+
+/* Add your specific styles for other elements as needed */
