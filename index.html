@@ -4,128 +4,29 @@
 <head>
   <meta charset="utf-8">
   <title>Weather</title>
-  <!-- Latest compiled and minified CSS -->
   <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/css/bootstrap.min.css">
-
-  <!-- jQuery library -->
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
-
-  <!-- Latest compiled JavaScript -->
   <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/js/bootstrap.min.js"></script>
   <style>
-body {
-    font-family: 'Arial', sans-serif;
-    background-color: #fbe4d8;
-    color: #190019;
-}
-
-nav {
-    background-color: #190019;
-    color: #fff;
-}
-
-h1, h2, h3, h4, h5, h6 {
-    color: #2b124c;
-}
-
-.input-group-btn .btn {
-    background-color: #e07f7f;
-    color: #fff;
-}
-
-.form-control {
-    border-color: #2b124c;
-}
-
-.btn-default {
-    background-color: #854f6c;
-    color: #fff;
-}
-
-.btn-default:hover {
-    background-color: #522b5b;
-    color: #fff;
-}
-
-.row {
-    margin: 10px 0;
-}
-
-.col-md-6 {
-    width: 50%;
-}
-
-.col-md-offset-3 {
-    margin-left: 25%;
-}
-
-ul {
-    list-style-type: none;
-    padding: 0;
-}
-
-li {
-    margin-bottom: 10px;
-}
-/* Style for the container of daily forecasts */
-.daily-forecast-container {
-    display: flex;
-    justify-content: space-around;
-    margin-top: 20px;
-}
-
-/* Style for individual forecast boxes */
-.daily-forecast-box {
-    border: 2px solid #190019;
-    padding: 15px;
-    text-align: center;
-    width: 150px;
-    margin: 0 10px;
-    background-color: #fff;
-    border-radius: 8px;
-    box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
-    transition: background-color 0.3s ease;
-    margin: 0 10px;
-    background-color: #fff;
-    border-radius: 8px;
-    box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
-    transition: background-color 0.3s ease;
-}
-
-/* Style for forecast box content */
-.daily-forecast-content {
-    color: #190019;
-    margin-top: 10px;
-    font-size: 14px;
-    line-height: 1.5;
-    padding: 10px;
-    text-align: center;
-}
-
-/* Style for hover effect on forecast boxes */
-.daily-forecast-box:hover {
-    background-color: #fbe4d8;
-}
-
-/* Add your specific styles for other elements as needed */
-
+    /* Your CSS styles here */
   </style>
 </head>
 
 <body>
-  <nav class="row" style="background: #e07f7f ; color: white;">
-    <div align="center"><h1 class="col-md-3 text-center">Weather Detector</h1></div>
+  <nav class="row" style="background: #e07f7f; color: white;">
+    <div align="center">
+      <h1 class="col-md-3 text-center">Weather Detector</h1>
+    </div>
   </nav>
   <br />
   <br />
   <center class="row">
     <form action="" method="post" class="col-md-6 col-md-offset-3">
-      {% csrf_token %}
       <div class="input-group">
         <input type="text" class="form-control" name="city" placeholder="Enter the name of a city">
         <div class="input-group-btn">
           <button class="btn btn-default" type="submit">
-            <i class="glyphicon glyphicon-search"></i>
+            <i class="glyphicon glyphicon-search"></i> Search
           </button>
         </div>
       </div>
@@ -133,34 +34,36 @@ li {
   </center>
 
   <div class="row">
-    {% if data.country_code %}
     <div class="col-md-6 col-md-offset-3">
-        <h1><span style="text-transform: uppercase">{{city}}</span></h1>
-        <h3>Country Code: {{data.country_code}}</h3>
-        <h5>Coordinates: {{data.coordinate}}</h5>
-        <h5>Temp: {{data.temp}}</h5>
-        <h5>Pressure: {{data.pressure}}</h5>
-        <h5>Humidity: {{data.humidity}}</h5>
-        <h5>Feels like: {{data.feels_like}}</h5>
-        <h5>Description: {{data.weather}}</h5>
+      <h1><span style="text-transform: uppercase">City Name</span></h1>
+      <h3>Country Code: Country Code</h3>
+      <h5>Coordinates: Longitude Latitude</h5>
+      <h5>Temp: Temperature</h5>
+      <h5>Pressure: Pressure</h5>
+      <h5>Humidity: Humidity</h5>
+      <h5>Feels like: Feels Like</h5>
+      <h5>Description: Weather</h5>
 
-        {% if data.daily_forecast %}
-            <h2>Daily Forecast:</h2>
-            <div class="daily-forecast-container">
-                {% for day in data.daily_forecast %}
-                    <div class="daily-forecast-box">
-                        <div class="daily-forecast-content">
-                            <strong>Date:</strong><br>{{ day.date }}<br>
-                            <strong>Weather:</strong><br>{% if day.weather == "Clear" %}☀️{% elif day.weather == "Clouds" %}☁️{% elif day.weather == "Rain" %}🌧️{% elif day.weather == "Snow" %}❄️{% elif day.weather == "Thunderstorm" %}⛈️{% else %}{{ day.weather }}{% endif %}<br>
-                            <strong>Temperature:</strong><br>{{ day.temp }} C
-                        </div>
-                    </div>
-                {% endfor %}
-            </div>
-        {% endif %}
+      <!-- Daily Forecast section -->
+      <h2>Daily Forecast:</h2>
+      <div class="daily-forecast-container">
+        <!-- Sample forecast box -->
+        <div class="daily-forecast-box">
+          <div class="daily-forecast-content">
+            <strong>Date:</strong><br>Sample Date<br>
+            <strong>Weather:</strong><br>☀️<br>
+            <strong>Temperature:</strong><br>Sample Temperature C
+          </div>
+        </div>
+        <!-- You can repeat this block for each forecast -->
+      </div>
     </div>
-    {% endif %}
-</div>
+  </div>
+
+  <script>
+    // You can use JavaScript to fetch dynamic data and update the content of the page
+    // For example, fetch weather data from an API and update the placeholders with actual data
+  </script>
 
 </body>
 
